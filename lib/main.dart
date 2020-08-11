@@ -1,5 +1,11 @@
-import 'package:first_flutter_app/app/signIn/sign_in_page.dart';
+import 'package:first_flutter_app/app/interfaces/auth_base.dart';
+import 'package:first_flutter_app/app/landing_page.dart';
+
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'app/services/auth.dart';
 
 void main(){
   runApp(MyApp());
@@ -7,15 +13,19 @@ void main(){
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'First Flutter App',
-      theme: ThemeData(
-        primarySwatch: Colors.indigo,
-      ),
-      home: SignInPage(
+    return Provider<AuthBase>(
+      create: (context)=> Auth(),
+      child: MaterialApp(
+        title: 'First Flutter App',
+        theme: ThemeData(
+          primarySwatch: Colors.indigo,
+        ),
+        home: LandingPage(
 
+
+        ),
       ),
     );
-
+ 
   }
 }
